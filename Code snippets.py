@@ -1,3 +1,10 @@
+def feat_importances(frst, feats):
+    outputs = pd.DataFrame({'feats': feats,
+                            'weight': frst.feature_importances_})
+    outputs = outputs.sort(columns='weight', ascending=False)
+    pritn outputs
+
+
 def create_val_and_train(df, seed, ids, split_rt = .20):
     """
         Creates two samples (generally used to create
