@@ -5,7 +5,7 @@ def feat_importances(frst, feats):
     pritn outputs
 
 
-def create_val_and_train(df, seed, ids, split_rt = .20):
+def create_val_and_train(df, seed, ids, split_rt=.20):
     """
         Creates two samples (generally used to create
         train and validation samples)
@@ -87,14 +87,14 @@ def predict_all_data(dfs, mod, name, features):
     for df in dfs:
         df = write_preds(df, mod, name, features)
 
-def subm_correl(subm1, subm2, id, target):
+def subm_correl(subm1, subm2, split_id, target):
     """
     Measures correlation between to Kaggle submissions
     """
     subm1 = pd.read_csv(SUBM_PATH + subm1)
     subm2 = pd.read_csv(SUBM_PATH + subm2)
     subm2 = subm2.rename(columns={target: 'target2'})
-    merged_df = subm1.merge(subm2, on=id)
+    merged_df = subm1.merge(subm2, on=split_id)
     return merged_df.corr()
 
 def merge_subms(subm_dict, path, name, target):
